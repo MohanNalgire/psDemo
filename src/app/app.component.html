@@ -8,29 +8,25 @@
           <p class="text-center list-head">Launch Year</p>
           <ul class="ul-list-filter">
             <li *ngFor="let year of years">
-              <button type="button" value="{{ year }}">{{ year }}</button>
+              <button type="button" value="{{year}}" (click)="selectedFilters({'year':year})">{{ year }}</button>
             </li>
           </ul>
         </div>
         <div class="success-launch-filter">
           <p class="text-center list-head">Successful Launch</p>
           <ul class="ul-list-filter">
-            <li>
-              <button type="button" value="true">True</button>
-            </li>
-            <li>
-              <button type="button" value="false">False</button>
+            <li *ngFor="let stats of launchStatus">
+              <button type="button" value="{{stats}}"
+                (click)="selectedFilters({'launch_success':stats})">{{stats==='yes'?'True':'False'}}</button>
             </li>
           </ul>
         </div>
-        <div class="success-landing-filter">
+        <div class=" success-landing-filter">
           <p class="text-center list-head">Successful Landing</p>
           <ul class="ul-list-filter">
-            <li>
-              <button type="button" value="true">True</button>
-            </li>
-            <li>
-              <button type="button" value="false">False</button>
+            <li *ngFor="let stats of launchStatus">
+              <button type="button" value="{{stats}}"
+                (click)="selectedFilters({'launch_success':stats})">{{stats==='yes'?'True':'False'}}</button>
             </li>
           </ul>
         </div>
@@ -39,7 +35,7 @@
     <div class="col-md-10">
       <div class="">
         <ul class="list-unstyled row">
-          <li *ngFor="let launch of spaceXLoches" class="col-md-3 spacex-list">
+          <li *ngFor="let launch of filteredLaunchResult" class="col-md-3 spacex-list">
             <div class="img-container">
               <img alt="{{ launch.mission_name }}" src="../assets/MicrosoftTeams-image.png" class="img-responsive" />
             </div>
