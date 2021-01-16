@@ -1,6 +1,6 @@
 <div class="container spacex-container">
   <h4>SpaceX Launch Programs</h4>
-  <div class="row margin-zero">
+  <div class="row">
     <div class="col-md-2 spacex-filter">
       <div class="filters">
         <h5>Filters</h5>
@@ -8,7 +8,7 @@
           <p class="text-center list-head">Launch Year</p>
           <ul class="ul-list-filter">
             <li *ngFor="let year of years">
-              <button type="button" value="{{year}}">{{year}}</button>
+              <button type="button" value="{{ year }}">{{ year }}</button>
             </li>
           </ul>
         </div>
@@ -44,42 +44,31 @@
               <img alt="{{ launch.mission_name }}" src="../assets/MicrosoftTeams-image.png" class="img-responsive" />
             </div>
             <div class="mission-details">
-              <P><a class="" href="#">{{ launch.mission_name }} # {{launch.flight_number }}</a></P>
-
+              <P><a class="" href="#">{{ launch.mission_name }} # {{ launch.flight_number }}</a></P>
               <P>
                 <label class="font-weight-bold">Mission Ids:</label>
                 <span>
                   <ul class="">
-                    <li *ngFor="let mId of [1]">
-                      {{ mId }}
-                    </li>
+                    <li *ngFor="let mId of [1]">{{ mId }}</li>
                   </ul>
                 </span>
               </P>
-
               <P>
-                <label class="font-weight-bold">Launch Year:</label>
+                <label class="font-weight-bold">Launch Year: </label>
                 <span>{{ launch.launch_year }}</span>
               </P>
-
               <P>
-                <label class="font-weight-bold">Sucesssful Launch:</label>
+                <label class="font-weight-bold">Successful Launch:</label>
                 <span>{{ launch.launch_success }}</span>
               </P>
-
               <P>
-                <label class="font-weight-bold">Scussful Landing:</label>
+                <label class="font-weight-bold">Successful Landing:</label>
                 <span>{{ launch.launch_success }}</span>
               </P>
-
-
-
             </div>
           </li>
         </ul>
       </div>
-      
     </div>
   </div>
-  
 </div>
