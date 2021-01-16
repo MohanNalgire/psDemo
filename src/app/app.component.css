@@ -1,11 +1,12 @@
 .spacex-container {
   display: block;
+  height: 1000px;
   padding: 1rem;
   background-color: #c7c3c3;
 }
 /* Filter section css */
 .spacex-filter {
-  border: 1px solid red;
+  background-color: white;
   height: 700px;
   width: 20%;
   float: left;
@@ -19,16 +20,24 @@ ul.filter-years {
   gap: 1rem;
 }
 
-ul.filter-years button {
+.filters button {
   height: 2rem;
   width: 80px;
-  background-color: green;
+  background-color: #72e572;
   border: 1px solid green;
   border-radius: 0.3rem;
   font-weight: bold;
   font-size: large;
 }
+.success-launch-filter,
+.success-landing-filter {
+  padding: 30px;
+}
 
+.success-launch-filter button,
+.success-landing-filter button {
+  margin: 0 10px;
+}
 /* main section css */
 .spacex-lauch {
   display: inline-flex;

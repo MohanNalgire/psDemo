@@ -31,7 +31,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.fetchData();
-    this.years = this.range(2000, 2020);
+    this.years = this.range(2010, 2020);
     console.log('this.years', this.years);
   }
 

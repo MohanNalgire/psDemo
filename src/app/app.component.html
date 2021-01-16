@@ -1,19 +1,26 @@
-Angular application
 <div class="spacex-container">
   <h1>SpaceX Launch Programs</h1>
   <div class="spacex-filter">
     <div class="filters">
       <h3>Filters</h3>
       <div class="launch-year-filter">
-        <input type="search" placeholder="Launch Year" value="" /> 
+        <p>Launch Year</p>
         <ul class="filter-years">
           <li *ngFor="let year of years">
             <button type="button" value="{{year}}">{{year}}</button>
           </li>
         </ul>
       </div>
-      <div class="success-launch-filter">Successful Launch</div>
-      <div class="success-landing-filter">Successful Landing</div>
+      <div class="success-launch-filter">
+        <p>Successful Launch</p>
+        <button type="button" value="true">True</button>
+        <button type="button" value="false">False</button>
+      </div>
+      <div class="success-landing-filter">
+        <p>Successful Landing</p>
+        <button type="button" value="true">True</button>
+        <button type="button" value="false">False</button>
+      </div>
     </div>
   </div>
   <div class="spacex-lauch">
