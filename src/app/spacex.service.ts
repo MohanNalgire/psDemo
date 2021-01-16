@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable({ providedIn: 'root' })
 export class SpacexService {
   baseURL = 'https://api.spacexdata.com/v3';
-  limit = 100;
+  limit = 10;
   offset = 0;
   land_success = true;
   launch_success = true;

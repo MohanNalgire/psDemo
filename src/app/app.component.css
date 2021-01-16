@@ -1,20 +1,20 @@
 .spacex-container {
-  display: block;
-  height: 1000px;
-  padding: 1rem;
   background-color: #c7c3c3;
+}
+
+.margin-zero {
+  margin-left: 0;
+  margin-right: -16px;
 }
 /* Filter section css */
 .spacex-filter {
-  background-color: white;
-  height: 700px;
-  width: 20%;
-  float: left;
+  background: #fff;
 }
 
-ul.filter-years {
+ul.ul-list-filter {
   list-style: none;
   margin: 0;
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -22,82 +22,41 @@ ul.filter-years {
 
 .filters button {
   height: 2rem;
-  width: 80px;
+  width: 70px;
   background-color: #72e572;
   border: 1px solid green;
   border-radius: 0.3rem;
-  font-weight: bold;
+  font-weight: normal;
   font-size: large;
 }
-.success-launch-filter,
-.success-landing-filter {
-  padding: 30px;
+
+p.list-head {
+  margin: 12px;
+  text-align: center !important;
+  border-bottom: 1px solid #c1c1c1;
 }
 
-.success-launch-filter button,
-.success-landing-filter button {
-  margin: 0 10px;
-}
 /* main section css */
-.spacex-lauch {
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  background-color: #c7c3c3;
-  border: 1px solid red;
-  width: 79%;
-  float: right;
+.spacex-list {
+  margin-bottom: 15px;
 }
-
-.spacex {
-  width: 300px;
-  height: 100%;
-}
-
-.spacex-card {
-  padding: 1rem;
-  background-color: white;
-  border-radius: 2%;
-}
-
 .img-container {
-  width: 100%;
-  height: 200px;
-  background-color: #e0dcdc;
+  padding: 12px;
+  background-color: #fff;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
 }
-
+.img-container img {
+  width: 100%;
+}
 .mission-details {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  background-color: white;
+  padding: 12px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
 }
 
-.spacex .spacex-img {
-  width: 100%;
-  max-width: 300px;
-  height: 200px;
-}
-
-.spacex-mission-ids div.mission_id {
-  height: 50px;
-  overflow-x: hidden;
-  overflow-y: scroll;
-}
-
-.table {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 10px;
-  padding: 10px;
-}
-
-.table .col {
-  background-color: rgba(255, 255, 255, 0.8);
-  text-align: left;
-  padding: 5px 0;
-}
-
-.spacex-mission-ids label,
-.table label {
-  font-weight: bold;
+.mission-details p {
+  margin-bottom: 10px;
+  line-height: 16px;
 }

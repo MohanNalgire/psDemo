@@ -1,59 +1,85 @@
-<div class="spacex-container">
-  <h1>SpaceX Launch Programs</h1>
-  <div class="spacex-filter">
-    <div class="filters">
-      <h3>Filters</h3>
-      <div class="launch-year-filter">
-        <p>Launch Year</p>
-        <ul class="filter-years">
-          <li *ngFor="let year of years">
-            <button type="button" value="{{year}}">{{year}}</button>
+<div class="container spacex-container">
+  <h4>SpaceX Launch Programs</h4>
+  <div class="row margin-zero">
+    <div class="col-md-2 spacex-filter">
+      <div class="filters">
+        <h5>Filters</h5>
+        <div class="launch-year-filter">
+          <p class="text-center list-head">Launch Year</p>
+          <ul class="ul-list-filter">
+            <li *ngFor="let year of years">
+              <button type="button" value="{{year}}">{{year}}</button>
+            </li>
+          </ul>
+        </div>
+        <div class="success-launch-filter">
+          <p class="text-center list-head">Successful Launch</p>
+          <ul class="ul-list-filter">
+            <li>
+              <button type="button" value="true">True</button>
+            </li>
+            <li>
+              <button type="button" value="false">False</button>
+            </li>
+          </ul>
+        </div>
+        <div class="success-landing-filter">
+          <p class="text-center list-head">Successful Landing</p>
+          <ul class="ul-list-filter">
+            <li>
+              <button type="button" value="true">True</button>
+            </li>
+            <li>
+              <button type="button" value="false">False</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-10">
+      <div class="">
+        <ul class="list-unstyled row">
+          <li *ngFor="let launch of spaceXLoches" class="col-md-3 spacex-list">
+            <div class="img-container">
+              <img alt="{{ launch.mission_name }}" src="../assets/MicrosoftTeams-image.png" class="img-responsive" />
+            </div>
+            <div class="mission-details">
+              <P><a class="" href="#">{{ launch.mission_name }} # {{launch.flight_number }}</a></P>
+
+              <P>
+                <label class="font-weight-bold">Mission Ids:</label>
+                <span>
+                  <ul class="">
+                    <li *ngFor="let mId of [1]">
+                      {{ mId }}
+                    </li>
+                  </ul>
+                </span>
+              </P>
+
+              <P>
+                <label class="font-weight-bold">Launch Year:</label>
+                <span>{{ launch.launch_year }}</span>
+              </P>
+
+              <P>
+                <label class="font-weight-bold">Sucesssful Launch:</label>
+                <span>{{ launch.launch_success }}</span>
+              </P>
+
+              <P>
+                <label class="font-weight-bold">Scussful Landing:</label>
+                <span>{{ launch.launch_success }}</span>
+              </P>
+
+
+
+            </div>
           </li>
         </ul>
       </div>
-      <div class="success-launch-filter">
-        <p>Successful Launch</p>
-        <button type="button" value="true">True</button>
-        <button type="button" value="false">False</button>
-      </div>
-      <div class="success-landing-filter">
-        <p>Successful Landing</p>
-        <button type="button" value="true">True</button>
-        <button type="button" value="false">False</button>
-      </div>
+      
     </div>
   </div>
-  <div class="spacex-lauch">
-    <div *ngFor="let launch of spaceXLoches" class="spacex">
-      <div class="spacex-card">
-        <div class="img-container">
-          <img alt="{{ launch.mission_name }}" src="{{ launch.links.mission_patch }}" class="spacex-img" />
-        </div>
-        <div class="mission-details">
-          <h3 title="{{launch.mission_name}}# {{launch.flight_number}}">{{ launch.mission_name }} # {{
-            launch.flight_number }}</h3>
-          <div class="spacex-mission-ids">
-            <div class="col"><label>Mission Ids:</label></div>
-            <div class="mission_id">
-              <ul>
-                <li *ngFor="let mId of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
-                  {{ mId }}
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="table">
-            <div class="col"><label>Launch Year:</label></div>
-            <div class="col">{{ launch.launch_year }}</div>
-
-            <div class="col"><label>Successful Launch:</label></div>
-            <div class="col">{{ launch.launch_success }}</div>
-
-            <div class="col"><label>Successful Landing:</label></div>
-            <div class="col">{{ launch.launch_success }}</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  
 </div>
