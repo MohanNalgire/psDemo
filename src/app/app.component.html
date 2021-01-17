@@ -5,28 +5,29 @@
       <div class="filters">
         <h5>Filters</h5>
         <div class="launch-year-filter">
-          <p class="text-center list-head">Launch Year</p>
-          <ul class="ul-list-filter">
+          <label class="text-center list-head">Launch Year</label>
+          <ul class="ul-list-filter" id="ul-list-filter">
             <li *ngFor="let year of years">
-              <button type="button" value="{{year}}" (click)="selectedFilters({'year':year})">{{ year }}</button>
+              <button type="button" value="{{year}}" (click)="selectedFilters($event,{'launch_year':year})">{{ year
+                }}</button>
             </li>
           </ul>
         </div>
         <div class="success-launch-filter">
-          <p class="text-center list-head">Successful Launch</p>
-          <ul class="ul-list-filter">
+          <label class="text-center list-head">Successful Launch</label>
+          <ul class="ul-list-filter" id="launch_success">
             <li *ngFor="let stats of launchStatus">
-              <button type="button" value="{{stats}}"
-                (click)="selectedFilters({'launch_success':stats})">{{stats==='yes'?'True':'False'}}</button>
+              <button type="button"
+                (click)="selectedFilters($event,{'launch_success':stats})">{{stats===true?'True':'False'}}</button>
             </li>
           </ul>
         </div>
         <div class=" success-landing-filter">
-          <p class="text-center list-head">Successful Landing</p>
-          <ul class="ul-list-filter">
+          <label class="text-center list-head">Successful Landing</label>
+          <ul class="ul-list-filter" id="landing_success">
             <li *ngFor="let stats of launchStatus">
               <button type="button" value="{{stats}}"
-                (click)="selectedFilters({'launch_success':stats})">{{stats==='yes'?'True':'False'}}</button>
+                (click)="selectedFilters($event,{'landing_success':stats})">{{stats===true?'True':'False'}}</button>
             </li>
           </ul>
         </div>

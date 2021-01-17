@@ -32,13 +32,13 @@ ul.ul-list-filter {
   height: 2rem;
   width: 60px;
   background-color: #72e572;
-  border: 1px solid green;
+  border: 1px solid #75e97a;
   border-radius: 0.3rem;
   font-weight: normal;
   font-size: large;
 }
 
-p.list-head {
+label.list-head {
   margin: 12px;
   text-align: center !important;
   border-bottom: 1px solid #c1c1c1;

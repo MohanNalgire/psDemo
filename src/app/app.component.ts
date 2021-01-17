@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SpacexService } from './spacex.service';
 
 interface filtersI {
-  year: number;
+  launch_year: number;
   launch_success: boolean;
   landing_success: boolean;
 }
@@ -15,13 +15,14 @@ export class AppComponent implements OnInit, OnDestroy {
   spaceXLoches = [];
   years: number[];
   launchData: any;
-  launchStatus = ['yes', 'no'];
+  launchStatus = [true, false];
   filteredLaunchResult: any[];
   emptyFilter: filtersI = {
-    year: null,
+    launch_year: null,
     launch_success: null,
     landing_success: null,
   };
+  currentAppliedFilters: any = {};
   constructor(private spacexService: SpacexService) {}
 
   range = (start, end, length = end - start + 1) => {
@@ -32,8 +33,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.spacexService.getSpacexLaunches().subscribe(
       (data: any) => {
         this.spaceXLoches = data;
-        this.selectedFilters(this.emptyFilter);
-        console.log('space x data', data);
+        this.selectedFilters(null, {});
       },
       (error) => {
         console.error('space x data fetch error:', error);
@@ -44,23 +44,54 @@ export class AppComponent implements OnInit, OnDestroy {
     );
   }
 
-  selectedFilters(filter) {
-    const currentFilter: filtersI = {
-      year: filter.year,
-      launch_success: filter.launch_success === 'yes' ? true : false,
-      landing_success: filter.landing_success === 'yes' ? true : false,
-    };
-
-    this.filteredLaunchResult = this.spaceXLoches.filter((e) => {
-      if (currentFilter.year > 0) {
-        return e.launch_year === currentFilter.year.toString();
-      } else if (filter.launch_success) {
-        return e.launch_success === currentFilter.launch_success;
-      } else if (filter.landing_success) {
-        return e.landing_success === currentFilter.landing_success;
+  selectedFilters(event, filter) {
+    if (event) {
+      const parentULId = event.target.closest('ul').id;
+      const nodes = document.getElementById(parentULId).childNodes;
+      nodes.forEach((e) => {
+        let el = e.childNodes[0] as HTMLElement;
+        if (el) {
+          el.style.backgroundColor = '#72e572';
+        }
+      });
+      event.target.style.backgroundColor = 'green';
+    }
+    // Find if the array contains an object by comparing the property value
+    const checkProperty =
+      this.currentAppliedFilters.hasOwnProperty(Object.keys(filter)[0]) &&
+      Object.values(filter)[0]
+        ? true
+        : false;
+    if (checkProperty) {
+      if (
+        this.currentAppliedFilters[Object.keys(filter)[0]] ===
+        Object.values(filter)[0]
+      ) {
+        // test
       } else {
-        return this.spaceXLoches;
+        this.currentAppliedFilters[Object.keys(filter)[0]] = Object.values(
+          filter
+        )[0];
       }
+      // return (this.filteredLaunchResult = this.spaceXLoches);
+    } else if (
+      Object.keys(filter).length > 0 &&
+      filter.constructor === Object
+    ) {
+      this.currentAppliedFilters[Object.keys(filter)[0]] = Object.values(
+        filter
+      )[0];
+    }
+
+    this.filteredLaunchResult = this.spaceXLoches.filter((item) => {
+      for (var key in this.currentAppliedFilters) {
+        if (
+          item[key] === undefined ||
+          item[key] != this.currentAppliedFilters[key]
+        )
+          return false;
+      }
+      return true;
     });
     return this.filteredLaunchResult;
   }
@@ -68,7 +99,6 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.fetchData();
     this.years = this.range(2010, 2020);
-    console.log('this.years', this.years);
   }
 
   ngOnDestroy() {}
